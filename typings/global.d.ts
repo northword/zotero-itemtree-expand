@@ -6,13 +6,13 @@ declare const _globalThis: {
 };
 
 declare type ZToolkit = ReturnType<
-  typeof import("../src/utils/ztoolkit").createZToolkit
+  typeof import("../src/content/scripts/utils/ztoolkit").createZToolkit
 >;
 
 declare const ztoolkit: ZToolkit;
 
 declare const rootURI: string;
 
-declare const addon: import("../src/addon").default;
+declare const addon: import("../src/content/scripts/addon").default;
 
 declare const __env__: "production" | "development";

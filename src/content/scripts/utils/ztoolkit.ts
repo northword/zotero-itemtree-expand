@@ -1,6 +1,12 @@
-import { ZoteroToolkit } from "zotero-plugin-toolkit";
-import { config } from "../../package.json";
+import {
+  BasicTool,
+  UITool,
+  unregister,
+  ZoteroToolkit,
+} from "zotero-plugin-toolkit";
+import { config } from "../../../../package.json";
 
+// eslint-disable-next-line ts/no-use-before-define
 export { createZToolkit };
 
 function createZToolkit() {
@@ -31,9 +37,7 @@ function initZToolkit(_ztoolkit: ReturnType<typeof createZToolkit>) {
   );
 }
 
-import { BasicTool, unregister } from "zotero-plugin-toolkit";
-import { UITool } from "zotero-plugin-toolkit";
-
+// eslint-disable-next-line unused-imports/no-unused-vars
 class MyToolkit extends BasicTool {
   UI: UITool;
 

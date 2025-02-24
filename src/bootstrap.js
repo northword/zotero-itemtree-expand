@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 /**
  * Most of this code is from Zotero team's official Make It Red example[1]
  * or the Zotero 7 documentation[2].
@@ -7,7 +5,7 @@
  * [2] https://www.zotero.org/support/dev/zotero_7_for_developers
  */
 
-var chromeHandle;
+let chromeHandle;
 
 function install(data, reason) {}
 
@@ -19,12 +17,12 @@ async function startup({ id, version, resourceURI, rootURI }, reason) {
     rootURI = resourceURI.spec;
   }
 
-  var aomStartup = Components.classes[
+  const aomStartup = Components.classes[
     "@mozilla.org/addons/addon-manager-startup;1"
   ].getService(Components.interfaces.amIAddonManagerStartup);
-  var manifestURI = Services.io.newURI(rootURI + "manifest.json");
+  const manifestURI = Services.io.newURI(`${rootURI}manifest.json`);
   chromeHandle = aomStartup.registerChrome(manifestURI, [
-    ["content", "__addonRef__", rootURI + "content/"],
+    ["content", "__addonRef__", `${rootURI}content/`],
   ]);
 
   /**
@@ -53,7 +51,7 @@ async function onMainWindowUnload({ window }, reason) {
   Zotero.__addonInstance__?.hooks.onMainWindowUnload(window);
 }
 
-function shutdown({ id, version, resourceURI, rootURI }, reason) {
+async function shutdown({ id, version, resourceURI, rootURI }, reason) {
   if (reason === APP_SHUTDOWN) {
     return;
   }
@@ -63,7 +61,7 @@ function shutdown({ id, version, resourceURI, rootURI }, reason) {
       Components.interfaces.nsISupports,
     ).wrappedJSObject;
   }
-  Zotero.__addonInstance__?.hooks.onShutdown();
+  await Zotero.__addonInstance__?.hooks.onShutdown();
 
   Cc["@mozilla.org/intl/stringbundle;1"]
     .getService(Components.interfaces.nsIStringBundleService)
