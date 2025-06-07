@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       zotero-plugin-toolkit:
-        specifier: ^4.1.1
-        version: 4.1.1(zotero-types@4.0.3)
+        specifier: ^5.0.0
+        version: 5.0.0(zotero-types@4.0.3)
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^4.3.0
@@ -2066,11 +2066,11 @@ packages:
       conventional-changelog:
         optional: true
 
-  zotero-plugin-toolkit@4.1.1:
-    resolution: {integrity: sha512-oVepinex25MJHF3jksWw7VxQF8m9tMWkc7abgJFwDtT/brYrUGlLuJFRovQKLFIxpXQJOPs8SIok7rQgDv5XCA==}
+  zotero-plugin-toolkit@5.0.0:
+    resolution: {integrity: sha512-cAoY9msb2rxZXHvVptateGuYlhTNNg+FwQlEEEqBGg9rIobZ2s5tHFZBwuWm9Cloar/RLJdVgq3xrMmesmnYyQ==}
     engines: {node: '>=18'}
     peerDependencies:
-      zotero-types: ^3.1.0
+      zotero-types: ^4.0.0
 
   zotero-types@4.0.3:
     resolution: {integrity: sha512-pOIjICrJdc4BODyBus88e7H63xRNA1IRkuKTuGbEvJ+cVG873uhjM2H/VTJZzg6OK80QAFipEU/FC6inkRLrfQ==}
@@ -4328,7 +4328,7 @@ snapshots:
       - '@swc/helpers'
       - magicast
 
-  zotero-plugin-toolkit@4.1.1(zotero-types@4.0.3):
+  zotero-plugin-toolkit@5.0.0(zotero-types@4.0.3):
     dependencies:
       zotero-types: 4.0.3
 
