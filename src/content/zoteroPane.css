@@ -22,7 +22,9 @@
 #item-tree-main-default .virtualized-table .virtualized-table-row,
 #item-tree-main-default .virtualized-table .virtualized-table-row.selected,
 #item-tree-main-default .virtualized-table div[role="row"],
-#item-tree-main-default .virtualized-table div[role="row"][aria-selected="true"],
+#item-tree-main-default
+  .virtualized-table
+  div[role="row"][aria-selected="true"],
 .zotero-view-item-container .virtualized-table .row,
 .zotero-view-item-container .virtualized-table .row.selected,
 .zotero-view-item-container .virtualized-table .virtualized-table-row,
@@ -46,17 +48,29 @@
 #zotero-items-pane #zotero-items-tree .virtualized-table-cell,
 #zotero-items-pane #zotero-items-tree .row.selected .virtualized-table-cell,
 #zotero-items-pane #zotero-items-tree div[role="gridcell"],
-#zotero-items-pane #zotero-items-tree div[role="row"][aria-selected="true"] div[role="gridcell"],
+#zotero-items-pane
+  #zotero-items-tree
+  div[role="row"][aria-selected="true"]
+  div[role="gridcell"],
 #item-tree-main-default .virtualized-table .cell,
 #item-tree-main-default .virtualized-table .row.selected .cell,
 #item-tree-main-default .virtualized-table .virtualized-table-cell,
-#item-tree-main-default .virtualized-table .row.selected .virtualized-table-cell,
+#item-tree-main-default
+  .virtualized-table
+  .row.selected
+  .virtualized-table-cell,
 #item-tree-main-default .virtualized-table div[role="gridcell"],
-#item-tree-main-default .virtualized-table div[role="row"][aria-selected="true"] div[role="gridcell"],
+#item-tree-main-default
+  .virtualized-table
+  div[role="row"][aria-selected="true"]
+  div[role="gridcell"],
 .zotero-view-item-container .virtualized-table .cell,
 .zotero-view-item-container .virtualized-table .row.selected .cell,
 .zotero-view-item-container .virtualized-table .virtualized-table-cell,
-.zotero-view-item-container .virtualized-table .row.selected .virtualized-table-cell,
+.zotero-view-item-container
+  .virtualized-table
+  .row.selected
+  .virtualized-table-cell,
 #zotero-items-tree.main .cell,
 #zotero-items-tree.main .row.selected .cell,
 #zotero-items-tree.main .virtualized-table-cell,
@@ -164,7 +178,3 @@
   line-clamp: unset !important;
   -webkit-box-orient: unset !important;
 }
-
-
-
-

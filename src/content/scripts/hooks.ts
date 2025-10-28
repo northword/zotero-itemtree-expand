@@ -1,14 +1,14 @@
 import {
+  applyCustomRowHeights,
+  cleanupCustomRowHeights,
+  clearHeightCache,
+  setupCustomRowHeights,
+} from "./modules/custom-row-heights";
+import {
   registerDynamicStyleSheet,
   unregisterDynamicStyleSheet,
   updateDynamicStyleSheet,
 } from "./modules/dynamic-style";
-import {
-  setupCustomRowHeights,
-  cleanupCustomRowHeights,
-  applyCustomRowHeights,
-  clearHeightCache,
-} from "./modules/custom-row-heights";
 import { registerPreferencePanel } from "./modules/preference";
 import {
   registerStyleSheet,
@@ -74,10 +74,10 @@ async function onStartup() {
       } else if (prefName === "maxLines" && enabled) {
         // Update dynamic stylesheet with new max lines value
         updateDynamicStyleSheet();
-        
+
         // 清除缓存,因为maxLines改变会影响行高
         clearHeightCache();
-        
+
         // Refresh all trees after style update
         const windows = Zotero.getMainWindows();
         for (const win of windows) {
