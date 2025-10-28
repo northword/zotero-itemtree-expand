@@ -4,6 +4,7 @@
 # Node.js
 node_modules
 yarn.lock
+package-lock.json
 
 # Scaffold
 .env
@@ -13,4 +14,4 @@ logs
 
 # Debug
 /Debug/*
-/.github/copilot-instructions.md
+**/copilot-instructions.md
