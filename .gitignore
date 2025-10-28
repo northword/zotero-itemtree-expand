@@ -10,3 +10,7 @@ yarn.lock
 .scaffold
 build
 logs
+
+# Debug
+/Debug/*
+/.github/copilot-instructions.md

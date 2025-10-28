@@ -1,16 +1,170 @@
-#zotero-items-tree {
-  .virtualized-table .row {
-    height: fit-content !important;
-    position: relative !important;
-    top: unset !important;
-    padding: 5px 0;
-  }
+/* 
+ * Expand Item Tree - Make item list titles wrap to multiple lines
+ * 
+ * This stylesheet makes Zotero item tree titles wrap to multiple lines,
+ * allowing users to read the full title.
+ * 
+ * Compatible with Zotero 7 and 8, supporting both classic and virtualized table implementations.
+ */
 
-  .virtualized-table .cell {
-    white-space: unset !important;
-  }
+/* IMPORTANT: Only target the main item list in the center pane, NOT the left sidebar */
 
-  .virtualized-table-body .cell {
-    text-overflow: unset !important;
-  }
+/* Target main item tree specifically - use very specific selectors to avoid sidebar */
+/* Apply to BOTH selected and unselected rows to ensure consistent behavior */
+#zotero-items-pane #zotero-items-tree .row,
+#zotero-items-pane #zotero-items-tree .row.selected,
+#zotero-items-pane #zotero-items-tree .virtualized-table-row,
+#zotero-items-pane #zotero-items-tree .virtualized-table-row.selected,
+#zotero-items-pane #zotero-items-tree div[role="row"],
+#zotero-items-pane #zotero-items-tree div[role="row"][aria-selected="true"],
+#item-tree-main-default .virtualized-table .row,
+#item-tree-main-default .virtualized-table .row.selected,
+#item-tree-main-default .virtualized-table .virtualized-table-row,
+#item-tree-main-default .virtualized-table .virtualized-table-row.selected,
+#item-tree-main-default .virtualized-table div[role="row"],
+#item-tree-main-default .virtualized-table div[role="row"][aria-selected="true"],
+.zotero-view-item-container .virtualized-table .row,
+.zotero-view-item-container .virtualized-table .row.selected,
+.zotero-view-item-container .virtualized-table .virtualized-table-row,
+.zotero-view-item-container .virtualized-table .virtualized-table-row.selected,
+#zotero-items-tree.main .row,
+#zotero-items-tree.main .row.selected,
+#zotero-items-tree.main .virtualized-table-row,
+#zotero-items-tree.main .virtualized-table-row.selected {
+  /* Force rows to expand to fit content */
+  height: fit-content !important;
+  min-height: 32px !important;
+  max-height: none !important;
+  padding: 4px 0 !important;
+  align-items: flex-start !important;
+  overflow: visible !important;
 }
+
+/* Enable text wrapping in cells - apply to both selected and unselected */
+#zotero-items-pane #zotero-items-tree .cell,
+#zotero-items-pane #zotero-items-tree .row.selected .cell,
+#zotero-items-pane #zotero-items-tree .virtualized-table-cell,
+#zotero-items-pane #zotero-items-tree .row.selected .virtualized-table-cell,
+#zotero-items-pane #zotero-items-tree div[role="gridcell"],
+#zotero-items-pane #zotero-items-tree div[role="row"][aria-selected="true"] div[role="gridcell"],
+#item-tree-main-default .virtualized-table .cell,
+#item-tree-main-default .virtualized-table .row.selected .cell,
+#item-tree-main-default .virtualized-table .virtualized-table-cell,
+#item-tree-main-default .virtualized-table .row.selected .virtualized-table-cell,
+#item-tree-main-default .virtualized-table div[role="gridcell"],
+#item-tree-main-default .virtualized-table div[role="row"][aria-selected="true"] div[role="gridcell"],
+.zotero-view-item-container .virtualized-table .cell,
+.zotero-view-item-container .virtualized-table .row.selected .cell,
+.zotero-view-item-container .virtualized-table .virtualized-table-cell,
+.zotero-view-item-container .virtualized-table .row.selected .virtualized-table-cell,
+#zotero-items-tree.main .cell,
+#zotero-items-tree.main .row.selected .cell,
+#zotero-items-tree.main .virtualized-table-cell,
+#zotero-items-tree.main .row.selected .virtualized-table-cell {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  height: fit-content !important;
+  min-height: 24px !important;
+  max-height: none !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  display: flex !important;
+  align-items: flex-start !important;
+}
+
+/* Content inside cells - allow full wrapping without line limit */
+#zotero-items-pane #zotero-items-tree .cell .content,
+#zotero-items-pane #zotero-items-tree .cell .label,
+#zotero-items-pane #zotero-items-tree .cell span,
+#zotero-items-pane #zotero-items-tree .virtualized-table-cell .content,
+#zotero-items-pane #zotero-items-tree .virtualized-table-cell > span,
+#zotero-items-pane #zotero-items-tree div[role="gridcell"] span,
+#item-tree-main-default .virtualized-table span,
+.zotero-view-item-container .virtualized-table span,
+#zotero-items-tree.main span {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  /* Remove line-clamp to allow full content display */
+  overflow: visible !important;
+  display: inline !important;
+}
+
+/* Keep icon columns compact */
+#zotero-items-pane #zotero-items-tree .cell.icon,
+#zotero-items-pane #zotero-items-tree .cell[data-key="hasAttachment"],
+#zotero-items-pane #zotero-items-tree .cell[data-key="numNotes"],
+#item-tree-main-default .virtualized-table .cell.icon,
+#item-tree-main-default .virtualized-table .cell[data-key="hasAttachment"],
+#item-tree-main-default .virtualized-table .cell[data-key="numNotes"],
+.zotero-view-item-container .virtualized-table .cell.icon,
+#zotero-items-tree.main .cell.icon {
+  white-space: nowrap !important;
+}
+
+#zotero-items-pane #zotero-items-tree .cell.icon *,
+#zotero-items-pane #zotero-items-tree .cell[data-key="hasAttachment"] *,
+#zotero-items-pane #zotero-items-tree .cell[data-key="numNotes"] *,
+#item-tree-main-default .virtualized-table .cell.icon *,
+#item-tree-main-default .virtualized-table .cell[data-key="hasAttachment"] *,
+#item-tree-main-default .virtualized-table .cell[data-key="numNotes"] *,
+.zotero-view-item-container .virtualized-table .cell.icon *,
+#zotero-items-tree.main .cell.icon * {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+
+/* Explicitly preserve left sidebar default behavior */
+/* Collection tree and other sidebars should NOT be affected */
+/* Use more specific reset to avoid breaking the display */
+#zotero-collections-pane .row,
+#zotero-collections-pane .virtualized-table-row,
+#zotero-collections-tree .row,
+#zotero-collections-tree .virtualized-table-row,
+.collection-tree-container .row,
+.collection-tree .row {
+  /* Preserve default row behavior */
+  height: unset !important;
+  min-height: unset !important;
+  padding: unset !important;
+  align-items: unset !important;
+}
+
+#zotero-collections-pane .cell,
+#zotero-collections-pane .virtualized-table-cell,
+#zotero-collections-pane div[role="gridcell"],
+#zotero-collections-tree .cell,
+#zotero-collections-tree .virtualized-table-cell,
+#zotero-collections-tree div[role="gridcell"],
+.collection-tree-container .cell,
+.collection-tree .cell {
+  /* Preserve default cell behavior - single line with ellipsis */
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  word-wrap: normal !important;
+  word-break: normal !important;
+  height: unset !important;
+  min-height: unset !important;
+}
+
+#zotero-collections-pane span,
+#zotero-collections-tree span,
+.collection-tree-container span,
+.collection-tree span {
+  /* Reset any wrapping styles */
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: inline !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+}
+
+
+
+

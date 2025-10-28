@@ -22,7 +22,13 @@ export function registerStyleSheet(win: Window) {
 
 export function unregisterStyleSheet(win: Window) {
   const doc = win.document;
-  const e = doc.getElementById(`${addon.data.config.addonRef}-stylesheet`);
-  ztoolkit.log("unregisterStyleSheet", e);
+  // Use config.addonRef (not global addon) to find the stylesheet element.
+  const e = doc.getElementById(`${config.addonRef}-stylesheet`);
+  // ztoolkit may not be available at very early unload; guard logging.
+  try {
+    ztoolkit?.log?.("unregisterStyleSheet", e);
+  } catch {
+    // ignore
+  }
   e?.remove();
 }
