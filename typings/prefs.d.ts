@@ -7,7 +7,8 @@
 declare namespace _ZoteroTypes {
   interface Prefs {
     PluginPrefsMap: {
-      
+      "wrapTitles": boolean;
+      "maxLines": number;
     };
   }
 }
